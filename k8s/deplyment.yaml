@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: quake-log-parser
+  name: quake-log-parser
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: quake-log-parser
+  template:
+    metadata:
+      labels:
+        app: quake-log-parser
+    spec:
+      containers:
+        - image: nenodes/quake-log-parser
+          name: quake-log-parser
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: quake-log-parser
+  name: quake-log-parser
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: quake-log-parser
+  type: LoadBalancer
