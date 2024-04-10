@@ -19,7 +19,7 @@ import static cloudwalk.quakeparser.domain.enumeration.RoundStep.*;
 @Service
 @Getter
 @Setter
-public class RoundManager {
+public class RoundManager implements AutoCloseable {
 
     private SearchEngine searchEngine;
     protected List<Round> rounds = new ArrayList<>();
@@ -213,6 +213,14 @@ public class RoundManager {
     private void finishCurrentRound() {
         rounds.add(round);
         setRoundStarted(false);
+    }
+
+    @Override
+    public void close() throws Exception {
+        searchEngine = new SearchEngine();
+        rounds = new ArrayList<>();
+        round = new Round();
+        roundStarted = false;
     }
 
 }

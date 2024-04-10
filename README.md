@@ -12,7 +12,7 @@ Grouping the information into a general ranking, with all rounds played on the s
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/brenoap/quake-log-parser
 ```
 
 Go to the project directory

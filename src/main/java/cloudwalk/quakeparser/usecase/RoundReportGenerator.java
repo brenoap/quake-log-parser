@@ -63,4 +63,8 @@ public class RoundReportGenerator {
 
         return reader.lines();
     }
+
+    public void close() throws Exception {
+        round.close();
+    }
 }

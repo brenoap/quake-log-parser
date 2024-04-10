@@ -40,9 +40,10 @@ public class RoundController {
             })
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<RoundDetailJsonResponse>> getRoundReport() {
+    public ResponseEntity<List<RoundDetailJsonResponse>> getRoundReport() throws Exception {
 
         final List<Round> rounds = roundReportGenerator.generate();
+        roundReportGenerator.close();
         return new ResponseEntity<>(buildRoundsJson(rounds), HttpStatus.OK);
     }
 

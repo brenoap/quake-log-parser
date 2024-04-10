@@ -40,9 +40,10 @@ public class DeathCauseController {
             })
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<DeathDetailJsonResponse>> getRoundReport() {
+    public ResponseEntity<List<DeathDetailJsonResponse>> getRoundReport() throws Exception {
 
         final List<Round> rounds = roundReportGenerator.generateDeathCause();
+        roundReportGenerator.close();
         return new ResponseEntity<>(buildRoundsJson(rounds), HttpStatus.OK);
     }
 

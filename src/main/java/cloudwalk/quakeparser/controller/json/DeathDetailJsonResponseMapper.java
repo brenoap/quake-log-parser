@@ -1,12 +1,14 @@
 package cloudwalk.quakeparser.controller.json;
 
 import cloudwalk.quakeparser.domain.Round;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class DeathDetailJsonResponseMapper {
 
     private DeathDetailJsonResponseMapper() {}
